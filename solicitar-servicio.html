@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitar Servicio | TechSecure Solutions</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    input, textarea, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    button {
+      background-color: #273c75;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #40739e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Solicitar Servicio</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="quienes-somos.html">Quiénes Somos</a>
+    <a href="mision-vision.html">Misión y Visión</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+
+  <section>
+    <h2>Formulario de Solicitud</h2>
+    <form action="enviar.php" method="POST">
+      <label for="servicio">Servicio:</label>
+      <input type="text" id="servicio" name="servicio" readonly>
+
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" name="correo" required>
+
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" required>
+
+      <label for="detalle">Detalles adicionales:</label>
+      <textarea id="detalle" name="detalle" rows="4" placeholder="Describe brevemente tus necesidades..."></textarea>
+
+      <button type="submit">Enviar solicitud</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 TechSecure Solutions — Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Captura el tipo de servicio desde la URL
+    const params = new URLSearchParams(window.location.search);
+    const servicio = params.get('servicio');
+    const campoServicio = document.getElementById('servicio');
+
+    if (servicio) {
+      switch (servicio) {
+        case 'mantenimiento':
+          campoServicio.value = 'Mantenimiento y Reparación';
+          break;
+        case 'venta':
+          campoServicio.value = 'Venta de Equipos';
+          break;
+        case 'soporte':
+          campoServicio.value = 'Soporte Técnico Preventivo';
+          break;
+        case 'camaras':
+          campoServicio.value = 'Cámaras de Seguridad (CCTV)';
+          break;
+        case 'instalacion':
+          campoServicio.value = 'Instalación y Configuración de Cámaras de Seguridad';
+          break;
+        default:
+          campoServicio.value = 'Otro';
+      }
+    }
+  </script>
+</body>
+</html>
